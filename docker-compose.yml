@@ -1,0 +1,56 @@
+version: '2.4'
+
+services:
+    database:
+        image: mysql:5.7
+        restart: always
+        env_file: .env
+        environment:
+            MYSQL_ROOT_PASSWORD: 'pass'
+            MYSQL_DATABASE: 'forum'
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+        volumes:
+            - db:/var/lib/mysql
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        depends_on:
+            - database
+    mail:
+        image: djfarrelly/maildev:latest
+        ports:
+            - 1080:80
+    node:
+        image: node:12-alpine
+        working_dir: /app
+        command: yarn run hot
+        volumes:
+            - .:/app
+    cache:
+        image: redis:3.2-alpine
+        volumes:
+            - redis:/data
+        healthcheck:
+            test: redis-cli ping
+            interval: 1s
+            timeout: 3s
+            retries: 30
+    app:
+        build: .
+        env_file: .env
+        command: php artisan serve --host=0.0.0.0 -vvv
+        volumes:
+            - .:/app
+            - composer:/root/.composer
+        ports:
+            - 8000:8000
+        depends_on:
+            - database
+            - cache
+volumes:
+    composer:
+    db:
+    redis:
