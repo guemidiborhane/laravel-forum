@@ -15,10 +15,10 @@ services:
     adminer:
         image: adminer
         restart: always
-        ports:
-            - 8080:8080
         depends_on:
             - database
+        labels:
+          - "traefik.enable=true"
     mail:
         image: djfarrelly/maildev:latest
         ports:
@@ -50,6 +50,9 @@ services:
         depends_on:
             - database
             - cache
+            - mail
+        labels:
+          - "traefik.enable=true"
 volumes:
     composer:
     db:
