@@ -162,13 +162,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        DevDojo\Chatter\ChatterServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        //
+        * Package Service Providers...
+        */
+        DevDojo\Chatter\ChatterServiceProvider::class,
+        Cog\Laravel\Ban\Providers\BanServiceProvider::class,
 
         /*
          * Application Service Providers...
