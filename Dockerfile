@@ -25,4 +25,17 @@ RUN apk del -f .build-deps
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
 RUN composer g require hirak/prestissimo
 
+ARG GROUP_ID
+ARG USER_ID
+ARG user=app
+
+RUN addgroup --gid $GROUP_ID $user
+RUN adduser --disabled-password \
+              --gecos '' \
+              --uid $USER_ID \
+              --ingroup $user \
+              $user
+USER $user
+
 WORKDIR /app
+EXPOSE 8000

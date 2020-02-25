@@ -39,7 +39,11 @@ services:
             timeout: 3s
             retries: 30
     app:
-        build: .
+        build:
+            context: .
+            args:
+                USER_ID: ${USER_ID}
+                GROUP_ID: ${GROUP_ID}
         env_file: .env
         command: php artisan serve --host=0.0.0.0 -vvv
         volumes:
