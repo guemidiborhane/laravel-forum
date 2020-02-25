@@ -9,7 +9,8 @@
         "cybercog/laravel-ban": "3.*",
         "devdojo/chatter": "0.2.*",
         "laravel/framework": "5.3.*",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "santigarcor/laratrust": "5.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

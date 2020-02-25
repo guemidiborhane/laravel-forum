@@ -7,9 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable implements BannableContract
 {
+    use LaratrustUserTrait;
     use Notifiable;
     use Bannable;
 
