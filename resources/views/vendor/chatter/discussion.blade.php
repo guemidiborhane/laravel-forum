@@ -103,14 +103,14 @@
 			                				<p class="chatter_edit_btn">
 			                					<i class="chatter-edit"></i> @lang('chatter::messages.words.edit')
 			                				</p>
-                                            @role('staff')
-                                            <a href="{{ route('report.post', compact('post')) }}" class="btn btn-sm">
-                                                <i class="fa fa-flag"></i>
-                                                Report
-                                            </a>
-                                            @endrole
 			                			</div>
 			                		@endif
+									@role('staff')
+									<a href="{{ route('report.post', compact('post')) }}" class="btn btn-sm pull-right">
+										<i class="fa fa-flag"></i>
+										Report
+									</a>
+									@endrole
 			                		<div class="chatter_avatar">
 					        			@if(Config::get('chatter.user.avatar_image_database_field'))
 
@@ -157,7 +157,7 @@
 	            </div>
 
 	            <div id="pagination">{{ $posts->links() }}</div>
-
+				@permission('create-discussions')
 	            @if(!Auth::guest())
 
 	            	<div id="new_response">
@@ -234,6 +234,7 @@
 					</div>
 
 				@endif
+				@endpermission
 
 	        </div>
 

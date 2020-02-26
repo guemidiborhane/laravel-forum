@@ -63,7 +63,9 @@
 	    	<div class="col-md-3 left-column">
 	    		<!-- SIDEBAR -->
 	    		<div class="chatter_sidebar">
+					@permission('create-discussions')
 					<button class="btn btn-primary" id="new_discussion_btn"><i class="chatter-new"></i> @lang('chatter::messages.discussion.new')</button>
+					@endpermission
 					<a href="/{{ Config::get('chatter.routes.home') }}"><i class="chatter-bubble"></i> @lang('chatter::messages.discussion.all')</a>
           {!! $categoriesMenu !!}
 				</div>
@@ -131,7 +133,7 @@
 	        </div>
 	    </div>
 	</div>
-
+@permission('create-discussions')
 	<div id="new_discussion">
 
 
@@ -190,7 +192,7 @@
         </form>
 
     </div><!-- #new_discussion -->
-
+@endpermission
 </div>
 
 @if( $chatter_editor == 'tinymce' || empty($chatter_editor) )
