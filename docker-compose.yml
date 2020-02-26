@@ -6,10 +6,10 @@ services:
         restart: always
         env_file: .env
         environment:
-            MYSQL_ROOT_PASSWORD: 'pass'
-            MYSQL_DATABASE: 'forum'
-            MYSQL_USER: 'user'
-            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'secret'
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
         volumes:
             - db:/var/lib/mysql
     adminer:
