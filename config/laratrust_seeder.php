@@ -3,12 +3,12 @@
 return [
     'role_structure' => [
         'bde' => [
-            'users' => 'c,r,u,d,b',
+            'users' => 'r,d,b',
             'discussions' => 'c,r,u,d',
             'categories' => 'c,r,u,d'
         ],
         'staff' => [
-            'discussions' => 'r,d,s'
+            'discussions' => 'r,s'
         ],
         'student' => [
             'discussions' => 'c,r,u,d'
