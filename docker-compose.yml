@@ -24,9 +24,9 @@ services:
         ports:
             - 1080:80
     node:
-        image: node:12-alpine
+        image: node:10-alpine
         working_dir: /app
-        command: yarn run hot
+        command: yarn run dev
         volumes:
             - .:/app
     cache:

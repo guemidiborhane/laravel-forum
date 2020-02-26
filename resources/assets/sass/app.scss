@@ -7,3 +7,11 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+#chatter .chatter_container {
+    margin-top: 20px !important;
+}
+
+.navbar-default {
+    border-color: #f6f6f6 !important;
+}
