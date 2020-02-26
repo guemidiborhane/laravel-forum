@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', function () {
-  return redirect()->route('chatter.home');
+  return redirect(route('chatter.home'), 301);
 });
 
 Route::get('/report/{post}', 'ReportsController@post')->name('report.post');
