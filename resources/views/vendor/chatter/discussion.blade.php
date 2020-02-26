@@ -157,9 +157,9 @@
 	            </div>
 
 	            <div id="pagination">{{ $posts->links() }}</div>
-				@permission('create-discussions')
 	            @if(!Auth::guest())
 
+				@permission('create-discussions')
 	            	<div id="new_response">
 
 	            		<div class="chatter_avatar">
@@ -224,6 +224,7 @@
 							@endif
 						</div>
 					</div>
+				@endpermission
 
 				@else
 
@@ -234,7 +235,6 @@
 					</div>
 
 				@endif
-				@endpermission
 
 	        </div>
 
