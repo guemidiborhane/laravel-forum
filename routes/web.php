@@ -24,3 +24,5 @@ Auth::routes();
 Route::get('/home', function () {
   return redirect()->route('chatter.home');
 });
+
+Route::get('/report/{post}', 'ReportsController@post')->name('report.post');
