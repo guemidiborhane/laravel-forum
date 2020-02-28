@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 Use DevDojo\Chatter\Models\Post;
 use Carbon\Carbon;
 
+Use App\User;
+
 class ReportsController extends Controller
 {
     public function post(Post $post) {
@@ -23,5 +25,11 @@ class ReportsController extends Controller
             ]);
         }
 
+    }
+
+    public function user(User $user) {
+        $user->ban();
+
+        return redirect()->route('chatter.home');
     }
 }

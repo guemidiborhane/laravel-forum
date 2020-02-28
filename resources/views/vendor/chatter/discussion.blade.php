@@ -131,7 +131,29 @@
 					        		</div>
 
 					        		<div class="chatter_middle">
-					        			<span class="chatter_middle_details"><a href="{{ \DevDojo\Chatter\Helpers\ChatterHelper::userLink($post->user) }}">{{ ucfirst($post->user->{Config::get('chatter.user.database_field_with_user_name')}) }}</a> <span class="ago chatter_middle_details">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans() }}</span></span>
+					        			<span class="chatter_middle_details">
+											<a href="{{ \DevDojo\Chatter\Helpers\ChatterHelper::userLink($post->user) }}">
+												{{ ucfirst($post->user->{Config::get('chatter.user.database_field_with_user_name')}) }}
+											</a>
+											<span class="ago chatter_middle_details">
+												{{ \Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans() }}
+											</span>
+											<span class="chatter_middle_details">
+											@if ($post->user->isBanned())
+											<strong class="text-danger">Banned!</strong>
+											@endif
+											</span>
+										</span>
+
+										@role('bde')
+										@if (!$post->user->isBanned())
+										<a href="{{ route('report.user', ['user' => $post->user]) }}" class="btn btn-sm text-danger">
+											<i class="fa fa-ban"></i>
+											Ban
+										</a>
+										@endif
+										@endrole
+
 					        			<div class="chatter_body">
 
 					        				@if($post->markdown)

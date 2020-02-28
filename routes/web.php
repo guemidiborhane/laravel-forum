@@ -25,4 +25,5 @@ Route::get('/home', function () {
   return redirect(route('chatter.home'), 301);
 });
 
-Route::get('/report/{post}', 'ReportsController@post')->name('report.post');
+Route::get('/report/post/{post}', 'ReportsController@post')->name('report.post');
+Route::get('/report/user/{user}', 'ReportsController@user')->name('report.user');
